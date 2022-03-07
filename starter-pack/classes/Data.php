@@ -8,9 +8,9 @@ class Data
     {
         return [
             'pain' => 'bread',
-            'nain de jardin' => 'garden gnome',
-            'ouef' => 'egg',
-            'bouisson' => 'bush',
+            'nain de jardian' => 'garden gnome',
+            'oeuf' => 'egg',
+            'buisson' => 'bush',
             'chapeau' => 'hat',
             'porte' => 'door',
             'musique' => 'music',

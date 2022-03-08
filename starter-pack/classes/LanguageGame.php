@@ -1,5 +1,12 @@
 <?php
 
+function pre($input)
+{
+    echo "<pre>";
+    var_dump($input);
+    echo "</pre>";
+}
+
 class LanguageGame
 {
     private array $words;
@@ -13,7 +20,7 @@ class LanguageGame
             // TODO: create instances of the Word class to be added to the words array
             $this->words[] = new Word($frenchTranslation, $englishTranslation);
         }
-        var_dump(Data::words());
+        pre($this->words);
     }
 
 

@@ -10,10 +10,10 @@
 
 <body>
     <!-- TODO: add a form for the user to play the game -->
-    <form action="" method="post">
-        <p>French word: </p>
-        <label for="english">English word:</label>
-        <input type="text" id="english" name="english"><br><br>
+    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+        <p>French word:</p>
+        <label for="englishWord">English word:</label>
+        <input type="text" id="englishWord" name="englishWord"><br><br>
         <input type="submit" value="New word">
     </form>
 </body>

@@ -6,6 +6,7 @@ function pre($input)
     var_dump($input);
     echo "</pre>";
 }
+pre($_POST);
 
 class LanguageGame
 {
@@ -20,9 +21,17 @@ class LanguageGame
             // TODO: create instances of the Word class to be added to the words array
             $this->words[] = new Word($frenchTranslation, $englishTranslation);
         }
-        pre($this->words);
+        //pre(array_rand(Data::words(), 1));
+        //pre($this->words[0]->word);
+        pre($this->words[array_rand($this->words, 1)]->word);
+        //pre(array_rand($this->words, 1));
     }
 
+    public function randomWord()
+    {
+        $frenchWord = $this->words[array_rand($this->words, 1)]->word;
+        return $frenchWord;
+    }
 
     public function run(): void
     {
@@ -30,6 +39,8 @@ class LanguageGame
 
         // Option A: user visits site first time (or wants a new word)
         // TODO: select a random word for the user to translate
+        if (empty($_POST['englishWord'])) {
+        }
 
         // Option B: user has just submitted an answer
         // TODO: verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first

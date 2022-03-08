@@ -22,7 +22,9 @@ class LanguageGame
             $this->words[] = new Word($frenchTranslation, $englishTranslation);
         }
         //pre(array_rand(Data::words(), 1));
-        //pre($this->words[0]->word);
+        //pre($this->words);
+        //pre($this->words[1]);
+        //pre($this->words[0]->word)
         pre($this->words[array_rand($this->words, 1)]->word);
         //pre(array_rand($this->words, 1));
     }
@@ -32,6 +34,7 @@ class LanguageGame
         $frenchWord = $this->words[array_rand($this->words, 1)]->word;
         return $frenchWord;
     }
+    //echo randomWord();
 
     public function run(): void
     {
@@ -40,6 +43,8 @@ class LanguageGame
         // Option A: user visits site first time (or wants a new word)
         // TODO: select a random word for the user to translate
         if (empty($_POST['englishWord'])) {
+            $frenchWord = $this->words[array_rand($this->words, 1)]->word;
+            echo "<p>French word: $frenchWord </p>";
         }
 
         // Option B: user has just submitted an answer

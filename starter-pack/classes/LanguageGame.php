@@ -11,6 +11,7 @@ pre($_POST);
 class LanguageGame
 {
     private array $words;
+    public Word $randomObject;
 
     public function __construct()
     {
@@ -23,18 +24,18 @@ class LanguageGame
         }
         //pre(array_rand(Data::words(), 1));
         //pre($this->words);
-        //pre($this->words[1]);
-        //pre($this->words[0]->word)
-        pre($this->words[array_rand($this->words, 1)]->word);
+        //pre($this->words[0]);
+        //pre($this->words[array_rand($this->words, 1)]->word);
+        //pre($this->words[array_rand($this->words, 1)]->answer);
+
         //pre(array_rand($this->words, 1));
     }
 
-    public function randomWord()
+    public function randomObject()
     {
-        $frenchWord = $this->words[array_rand($this->words, 1)]->word;
-        return $frenchWord;
+        $randomObject = $this->words[array_rand($this->words, 1)];
+        return $randomObject;
     }
-    //echo randomWord();
 
     public function run(): void
     {
@@ -43,12 +44,14 @@ class LanguageGame
         // Option A: user visits site first time (or wants a new word)
         // TODO: select a random word for the user to translate
         if (empty($_POST['englishWord'])) {
-            $frenchWord = $this->words[array_rand($this->words, 1)]->word;
-            echo "<p>French word: $frenchWord </p>";
+            $this->randomObject = $this->randomObject();
+            var_dump($this->randomObject);
         }
 
         // Option B: user has just submitted an answer
         // TODO: verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
+        if (!empty($_POST['englishWord'])) {
+        }
         // TODO: generate a message for the user that can be shown
 
     }

@@ -23,7 +23,3 @@ $game = new LanguageGame();
 $game->run();
 
 require 'view.php';
-
-$_SESSION['randomObject'] = $game->randomObject;
-$randomObjectSession = $_SESSION['randomObject'];
-var_dump($randomObjectSession);

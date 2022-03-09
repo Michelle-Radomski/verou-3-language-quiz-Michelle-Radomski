@@ -7,6 +7,7 @@ function pre($input)
     echo "</pre>";
 }
 pre($_POST);
+pre($_SESSION);
 
 class LanguageGame
 {
@@ -45,14 +46,23 @@ class LanguageGame
         // TODO: select a random word for the user to translate
         if (empty($_POST['englishWord'])) {
             $this->randomObject = $this->randomObject();
-            var_dump($this->randomObject);
+            $_SESSION['randomObject'] = serialize($this->randomObject);
+            //var_dump($this->randomObject);
         }
 
         // Option B: user has just submitted an answer
         // TODO: verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
-        if (!empty($_POST['englishWord'])) {
-        }
         // TODO: generate a message for the user that can be shown
-
+        if (!empty($_POST['englishWord'])) {
+            $this->randomObject = unserialize($_SESSION["randomObject"]);
+            $result = $this->randomObject->verify($_POST['englishWord']); // ? 'true' : 'false' -> https://www.phptutorial.net/php-tutorial/php-ternary-operator/
+            if ($result == true) {
+                $succesMessage = 'That is correct!';
+                echo $succesMessage;
+            } else {
+                $failMessage = 'Ouch, less gaming and more studying!';
+                echo $failMessage;
+            }
+        }
     }
 }
